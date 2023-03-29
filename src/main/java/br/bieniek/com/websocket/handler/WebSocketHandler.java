@@ -7,6 +7,10 @@ import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.UUID;
+
 @Slf4j
 @Component
 public class WebSocketHandler extends TextWebSocketHandler {
@@ -15,6 +19,18 @@ public class WebSocketHandler extends TextWebSocketHandler {
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
         log.info("[afterConnectionEstablished] session: {}", session);
         log.info("[afterConnectionEstablished] session id: {}", session.getId());
+
+        new Timer().scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                try {
+                    log.info("[afterConnectionEstablished] sending message to session: {}", session);
+                    session.sendMessage(new TextMessage("Hello from server UUID: " + UUID.randomUUID() + "!"));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }, 2000L, 2000L);
     }
 
     @Override
