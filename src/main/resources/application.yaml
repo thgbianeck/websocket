@@ -1,11 +1,11 @@
 spring:
   redis:
-    host: ${REDIS_HOST:localhost}
+    host: ${REDIS_HOST:server.bieniek}
     port: ${REDIS_PORT:6379}
   cache:
     type: redis
     redis:
-      time-to-live: 3600000
+      time-to-live: 3600000 # 1 hour
 
 app:
   auth:
