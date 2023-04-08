@@ -1,0 +1,26 @@
+package br.bieniek.com.websocket.providers;
+
+import lombok.RequiredArgsConstructor;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.Map;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+@SpringBootTest
+class JsonWebTokenProviderTest {
+
+    @Autowired
+    private TokenProvider tokenProvider;
+
+    @Test
+    @DisplayName("Should decode a valid token")
+    void shouldDecodeAValidToken() {
+        Map<String, String> decoded = tokenProvider.decode("eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Im9Wb3lKcHlzM1FzVUJqS2tUQkdxWCJ9.eyJnaXZlbl9uYW1lIjoiVGhpYWdvIiwiZmFtaWx5X25hbWUiOiJCaWFuZWNrIiwibmlja25hbWUiOiJ0aGlhZ29iaWFuZWNrIiwibmFtZSI6IlRoaWFnbyBCaWFuZWNrIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FHTm15eFpxV3VFc1AxX0xETFAyUXRIaU5rNTJxMmg3RXpUN0ZFX1Ric1dIVGc9czk2LWMiLCJsb2NhbGUiOiJwdC1CUiIsInVwZGF0ZWRfYXQiOiIyMDIzLTAzLTMxVDEyOjA2OjQ2Ljc3OVoiLCJlbWFpbCI6InRoaWFnb2JpYW5lY2tAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImlzcyI6Imh0dHBzOi8vZGV2LTQwb3RjYmN3NDJ4cGhqNmIudXMuYXV0aDAuY29tLyIsImF1ZCI6Imhxak9tRU53N0R2N3hlaHRRUTRrZkJ2Y1N4OGFXM0JwIiwiaWF0IjoxNjgwMjY0NDA4LCJleHAiOjE2ODAzMDA0MDgsInN1YiI6Imdvb2dsZS1vYXV0aDJ8MTEyNjI4MTQzNDIyMjk4NzM3MjU1Iiwic2lkIjoiOElheHNNd0tzNlVMS0tjWU5GT2FHcE1KT3dBZUdTeWkiLCJub25jZSI6ImVYQm5iVWt0YTBjMFVqTkpZVmhyY1ZkSU5USkhjMG8zY1UweVJXVlFVMlJLTTFNeWJXdERWbXBYVUE9PSJ9.AHt1eVQmMEkiN7-3HQGw6K1RsdXNNdJq9I4niZ4IoJX-GO2t-EehMRVk59iSN_iy5izq2quv_hfjXET8cjwMxHN8mjZdSdMEMcDT6FQLZ5lFDOf_ccnQA2Yjy6T0S3mDM1ofAByn19luN3z4Uxi39m4Gf3u7qMRO3TyDkQR89mmbZbadwkPFEEnPH6MN7RlWxq77luGbsVhBi8QiLMGkN-e4fNXbKtwNvkfpuhGXEHLT6k-QbfBjWFBtrUciot3tJbbm5xocfT3fOu-w5vcHaAUS9fVheceCZT-TS1mwEheemDyXjvNYF2BOQBaMhil5eH80lLJHXtDT2Dpj7ODPAw");
+        System.out.println(decoded);
+    }
+
+}
